@@ -35,7 +35,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True if env('DJANGOAPPMODE') == 'Debug' else False
 print(f'Application running in debug mode: {DEBUG}')
 
-ALLOWED_HOSTS = ['automax-django-udemy.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*.vercel.app', '127.0.0.1']
 
 
 # Application definition
@@ -98,15 +98,16 @@ if env('USEDEBUGDB') == 'True':
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': env('DBNAME'),
-            'USER': env('DBUSER'),
-            'PASSWORD': env('DBPASSWORD'),
-            'HOST': env('DBHOST'),
-            'PORT': env('DBPORT'),
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': 'postgresql://postgres:4IL5GBPpGrKDanlXLwVC@containers-us-west-186.railway.app:7630/railway',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '4IL5GBPpGrKDanlXLwVC',
+        'HOST': 'containers-us-west-186.railway.app',
+        'PORT': 7630,
     }
+}
 
 
 # Password validation
